@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Music Page</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/bootstrap-glyphicon.css">
+    <link rel="stylesheet" href="css/player.css">
+    <link rel="shortcut icon" href="css/music.png">
+</head>
+<body>
+    <audio  id="audio" class="none"
+            data-bind="event:   {durationchange: set_duration, 
+                                timeupdate     : set_time,
+                                ended          : play_end}" 
+            controls 
+            src="audio/ugress.mp3" 
+            type="audio/mpeg">
+    </audio>
+
+    <div class="player">
+        <div>
+            <div>
+                <i  data-bind=" attr: {class: play_pause_button},
+                                click: play_pause_action">
+                </i>
+            </div>
+            <div data-bind="text: name"></div>
+            <div class="border_right"></div>
+        </div>
+        <div>
+            <div data-bind="text: time, click: inv_time" class="pointer"></div>
+            <div>
+                <input  data-bind=" attr: {max: max_time}, 
+                                    value: current_time, 
+                                    valueUpdate: 'input'" 
+                        type="range"
+                        value="0"
+                        min="0" 
+                        step="any">
+            </div>
+            <div data-bind="text: duration" class="border_right"></div>
+            <div>
+                <i  data-bind=" attr: {class: mute_unmute_button},
+                                click: mute_unmute_action"></i>
+            </div>
+            <div>
+                <input  data-bind=" value: volume,
+                                    valueUpdate: 'input'" 
+                        type="range" 
+                        min="0" 
+                        step="any" 
+                        max="1">
+            </div>
+            <span data-bind="text: volume_pc" class="none"></span>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/knockout.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/timestring.js"></script>
+    <script type="text/javascript" src="js/player.js"></script>
+</body>
+</html>
