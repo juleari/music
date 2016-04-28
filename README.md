@@ -1,2 +1,2 @@
 # music
-player project for mail.ru 2014
+html player for mail.ru 2014
